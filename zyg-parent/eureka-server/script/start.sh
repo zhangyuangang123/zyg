@@ -1,15 +1,15 @@
 #!/bin/bash
 #打包镜像启动服务
 #author：SHIYULONG
-#docker_repostory=localhost:5000/zyg/
+docker_repostory=ip:5000/hgs/
 server_name=eureka-server
 server_tag=:1.0.0-SNAPSHOT
 #服务路径
 workdir=$(dirname  "$(pwd)")
 #工程路径
-topdir=${workdir%zyg-parent*}
+topdir=${workdir%hgs-parent*}
 #core包路径
-#coredir="zyg-parent/核心包"
+coredir="hgs-parent/hgs-ms-core"
 echo "workspace dir:" $workdir
 echo "core dir:"$topdir$coredir
 active=$1
@@ -22,28 +22,28 @@ elif [ $active"x" == "prodx" ]; then
 else
 	echo "未知的打包环境"
 	exit 1
-#fi
-#echo "----git pull----"
-#git merge >> /dev/null
-#if (( $? ))
-#then
-#	echo "git pull failed"
-#	exit 1
-#else
-#	echo "git pull success"
-#fi
-#echo "----hgs-ms-core install----"
+fi
+echo "----git pull----"
+git pull >> /dev/null
+if (( $? ))
+then
+	echo "git pull failed"
+	exit 1
+else
+	echo "git pull success"
+fi
+echo "----hgs-ms-core install----"
 
-#cd "$topdir$coredir"
-#git merge >> /dev/null
-#mvn clean install >> /dev/null
-#if (( $? ))
-#then
-#	echo "hgs-ms-core：mvn install failed"
-#	exit 1
-#else
-#	echo "hgs-ms-core：mvn install success"
-#fi
+cd "$topdir$coredir"
+git pull >> /dev/null
+mvn clean install >> /dev/null
+if (( $? ))
+then
+	echo "hgs-ms-core：mvn install failed"
+	exit 1
+else
+	echo "hgs-ms-core：mvn install success"
+fi
 #cd "$topdir$commondir"
 #echo "----caption-basics-server install----"
 #git pull >> /dev/null
