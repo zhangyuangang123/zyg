@@ -22,28 +22,28 @@ elif [ $active"x" == "prodx" ]; then
 else
 	echo "未知的打包环境"
 	exit 1
-fi
-echo "----git pull----"
-git merge >> /dev/null
-if (( $? ))
-then
-	echo "git pull failed"
-	exit 1
-else
-	echo "git pull success"
-fi
-echo "----hgs-ms-core install----"
+#fi
+#echo "----git pull----"
+#git merge >> /dev/null
+#if (( $? ))
+#then
+#	echo "git pull failed"
+#	exit 1
+#else
+#	echo "git pull success"
+#fi
+#echo "----hgs-ms-core install----"
 
-cd "$topdir$coredir"
-git merge >> /dev/null
-mvn clean install >> /dev/null
-if (( $? ))
-then
-	echo "hgs-ms-core：mvn install failed"
-	exit 1
-else
-	echo "hgs-ms-core：mvn install success"
-fi
+#cd "$topdir$coredir"
+#git merge >> /dev/null
+#mvn clean install >> /dev/null
+#if (( $? ))
+#then
+#	echo "hgs-ms-core：mvn install failed"
+#	exit 1
+#else
+#	echo "hgs-ms-core：mvn install success"
+#fi
 #cd "$topdir$commondir"
 #echo "----caption-basics-server install----"
 #git pull >> /dev/null
