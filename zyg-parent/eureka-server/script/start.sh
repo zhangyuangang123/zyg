@@ -24,7 +24,7 @@ else
 	exit 1
 fi
 echo "----git pull----"
-git pull >> /dev/null
+git merge >> /dev/null
 if (( $? ))
 then
 	echo "git pull failed"
@@ -35,7 +35,7 @@ fi
 echo "----hgs-ms-core install----"
 
 cd "$topdir$coredir"
-git pull >> /dev/null
+git merge >> /dev/null
 mvn clean install >> /dev/null
 if (( $? ))
 then
