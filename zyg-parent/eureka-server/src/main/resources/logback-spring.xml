@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="false">
+    <springProperty scop="context" name="spring.application.name" source="spring.application.name" defaultValue="member-server"/>
+    <property name="log.path" value="./log/"/>
+    <property name="log.size" value="100MB" />
+    <property name="log.maxHis7" value="7" />
+    <property name="log.maxHis30" value="30" />
+    <!-- Console log output -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %cyan(%logger{50}) - %highlight(%msg) %n</pattern>
+        </encoder>
+    </appender>
+    <!-- 按照每天生成日志文件 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--文件存放路径 -->
+        <file>${log.path}/out/out.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <FileNamePattern>${log.path}/out/out.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <maxFileSize>${log.size}</maxFileSize>
+            <!--日志文件保留天数-->
+            <MaxHistory>${log.maxHis30}</MaxHistory>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %cyan(%logger{50}) - %highlight(%msg) %n</pattern>
+            <charset>utf8</charset> <!-- 输出编码 -->
+        </encoder>
+    </appender>
+    <!-- Log file debug output -->
+    <appender name="debug" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/debug/debug.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/debug/%d{yyyy-MM}/debug.%d{yyyy-MM-dd}.%i.debug.log.gz</fileNamePattern>
+            <maxFileSize>${log.size}</maxFileSize>
+            <maxHistory>${log.maxHis30}</maxHistory>
+            <totalSizeCap>2GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%thread] %-5level [%logger{50}] %file:%line - %msg%n</pattern>
+            <charset>utf8</charset> <!-- 输出编码 -->
+        </encoder>
+    </appender>
+
+
+    <!-- Log file info output -->
+    <appender name="info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/info/info.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/info/%d{yyyy-MM}/debug.%d{yyyy-MM-dd}.%i.info.log.gz</fileNamePattern>
+            <maxFileSize>${log.size}</maxFileSize>
+            <maxHistory>${log.maxHis30}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%thread] %-5level [%logger{50}] %file:%line - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Log error output -->
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/error/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/error/%d{yyyy-MM}/error.%d{yyyy-MM-dd}.%i.error.log.gz</fileNamePattern>
+            <maxFileSize>${log.size}</maxFileSize>
+            <maxHistory>${log.maxHis30}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%thread] %-5level [%logger{50}] %file:%line - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+
+    <appender name="warn" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/warn/warn.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/warn/%d{yyyy-MM}/warn.%d{yyyy-MM-dd}.%i.warn.log.gz</fileNamePattern>
+            <maxFileSize>${log.size}</maxFileSize>
+            <maxHistory>${log.maxHis30}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%thread] %-5level [%logger{50}] %file:%line - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+    </appender>
+    <root level="info">
+        <appender-ref ref="console" />
+        <appender-ref ref="FILE" />
+        <appender-ref ref="info"/>
+        <appender-ref ref="error"/>
+        <appender-ref ref="warn" />
+        <appender-ref ref="debug" />
+    </root>
+
+</configuration>
