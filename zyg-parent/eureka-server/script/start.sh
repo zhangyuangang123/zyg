@@ -9,9 +9,9 @@ workdir=$(dirname  "$(pwd)")
 #工程路径
 topdir=${workdir%hgs-parent*}
 #core包路径
-coredir="hgs-parent/hgs-ms-core"
-echo "workspace dir:" $workdir
-echo "core dir:"$topdir$coredir
+#coredir="hgs-parent/hgs-ms-core"
+#echo "workspace dir:" $workdir
+#echo "core dir:"$topdir$coredir
 active=$1
 if [ $active"x" == "devx" ]; then
 	echo "打包环境：开发环境"
@@ -34,16 +34,16 @@ else
 fi
 echo "----hgs-ms-core install----"
 
-cd "$topdir$coredir"
-git pull >> /dev/null
-mvn clean install >> /dev/null
-if (( $? ))
-then
-	echo "hgs-ms-core：mvn install failed"
-	exit 1
-else
-	echo "hgs-ms-core：mvn install success"
-fi
+#cd "$topdir$coredir"
+#git pull >> /dev/null
+#mvn clean install >> /dev/null
+#if (( $? ))
+#then
+#	echo "hgs-ms-core：mvn install failed"
+#	exit 1
+#else
+#	echo "hgs-ms-core：mvn install success"
+#fi
 #cd "$topdir$commondir"
 #echo "----caption-basics-server install----"
 #git pull >> /dev/null
