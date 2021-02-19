@@ -1,7 +1,7 @@
 #!/bin/bash
 #打包镜像启动服务
 #author：SHIYULONG
-docker_repostory=ip:5000/hgs/
+docker_repostory=192.168.16.84:80/zyg/
 server_name=eureka-server
 server_tag=:1.0.0-SNAPSHOT
 #服务路径
@@ -9,9 +9,9 @@ workdir=$(dirname  "$(pwd)")
 #工程路径
 topdir=${workdir%hgs-parent*}
 #core包路径
-#coredir="hgs-parent/hgs-ms-core"
-#echo "workspace dir:" $workdir
-#echo "core dir:"$topdir$coredir
+coredir="hgs-parent/hgs-ms-core"
+echo "workspace dir:" $workdir
+echo "core dir:"$topdir$coredir
 active=$1
 if [ $active"x" == "devx" ]; then
 	echo "打包环境：开发环境"
@@ -34,8 +34,8 @@ else
 fi
 echo "----hgs-ms-core install----"
 
-#cd "$topdir$coredir"
-#git pull >> /dev/null
+cd "$topdir$coredir"
+git pull >> /dev/null
 #mvn clean install >> /dev/null
 #if (( $? ))
 #then
