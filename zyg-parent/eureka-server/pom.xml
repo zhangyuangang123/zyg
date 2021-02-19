@@ -69,18 +69,18 @@
                         </goals>
                     </execution>
                 </executions>
-             <!--   <configuration>
+                <configuration>
                     <dockerfile>src/main/docker/${profiles.active}/Dockerfile</dockerfile>
-                    &lt;!&ndash; harbor 仓库用户名及密码&ndash;&gt;
+                    <!-- harbor 仓库用户名及密码-->
                     <username>admin</username>
-                    <password>hgs_HB_2021</password>
+                    <password>Harbor12345</password>
                     <repository>${docker.repostory}/${docker.image.prefix}/${project.artifactId}-${profiles.active}
                     </repository>
                     <tag>${project.version}</tag>
                     <buildArgs>
                         <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
                     </buildArgs>
-                </configuration>-->
+                </configuration>
             </plugin>
         </plugins>
     </build>
