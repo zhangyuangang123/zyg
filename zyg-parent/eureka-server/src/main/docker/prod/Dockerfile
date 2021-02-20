@@ -14,7 +14,7 @@ ADD target/*jar app.jar
 #暴露端口
 EXPOSE $SERVER_PORT
 #定义jvm参数变量
-ENV JAVA_OPTS="-Xms128m -Xmx256m
+ENV JAVA_OPTS="-Xms128m -Xmx256m"
 #运行命令
 ENTRYPOINT java ${JAVA_OPTS} -Djava.security.egd=file:/prod/./urandom -jar /app.jar --server.port=${SERVER_PORT}
 #注释
