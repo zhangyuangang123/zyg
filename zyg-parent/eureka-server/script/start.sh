@@ -1,7 +1,7 @@
 #!/bin/bash
 #打包镜像启动服务
 #author：SHIYULONG
-docker_repostory=192.168.16.84:80/zyg/
+docker_repostory=192.168.16.84/zyg/
 server_name=eureka-server
 server_tag=:1.0.0-SNAPSHOT
 #服务路径

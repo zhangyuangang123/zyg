@@ -31,7 +31,7 @@
         <pageHelper.starter.version>1.2.3</pageHelper.starter.version>
         <fastDFS.client.version>1.26.1-RELEASE</fastDFS.client.version>
         <docker.image.prefix>zyg</docker.image.prefix>
-        <docker.repostory>192.168.16.84:80</docker.repostory>
+        <docker.repostory>192.168.16.84</docker.repostory>
     </properties>
 
     <dependencyManagement>
