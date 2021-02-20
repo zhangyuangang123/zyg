@@ -22,7 +22,7 @@ elif [ $active"x" == "prodx" ]; then
 else
 	echo "未知的打包环境"
 	exit 1
-fi
+#fi
 #echo "----git pull----"
 #git pull >> /dev/null
 #if (( $? ))
