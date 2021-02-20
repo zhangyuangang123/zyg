@@ -49,7 +49,7 @@
                 </executions>
                 <configuration>
                     <includeSystemScope>true</includeSystemScope>
-                    <mainClass>com.pbkj.cloud.member.MemberWebSubServerApplication</mainClass>
+                    <mainClass>com.zyg.EurekaServerApplication</mainClass>
                 </configuration>
             </plugin>
 
