@@ -7,11 +7,11 @@ server_tag=:1.0.0-SNAPSHOT
 #服务路径
 workdir=$(dirname  "$(pwd)")
 #工程路径
-topdir=${workdir%hgs-parent*}
+topdir=${workdir%zyg-parent*}
 #core包路径
-coredir="hgs-parent/hgs-ms-core"
-echo "workspace dir:" $workdir
-echo "core dir:"$topdir$coredir
+#coredir="hgs-parent/hgs-ms-core"
+#echo "workspace dir:" $workdir
+#echo "core dir:"$topdir$coredir
 active=$1
 if [ $active"x" == "devx" ]; then
 	echo "打包环境：开发环境"
