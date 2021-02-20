@@ -64,7 +64,7 @@ then
 	exit 1
 else
        	echo "mvn package success"
-fi
+#fi
 #镜像名
 image_name="$server_name-$1$server_tag"
 if [ $active = "dev" ] || [ $active = "fat" ];
