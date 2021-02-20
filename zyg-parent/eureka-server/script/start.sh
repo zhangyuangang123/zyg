@@ -74,7 +74,7 @@ docker push "$docker_repostory$image_name"
 	echo "stop container:$server_name"
 	ssh root@$ip_address docker stop $(docker ps -q -a --filter name=$server_name)
 	echo "images run"
-	ssh root@$ip_address docker run --name $server_name"-`date +%m%d`" --restart=always -d -v /data/hgsv2/logs/eureka-server/"`date +%m%d`":/log  --network=host "$docker_repostory$image_name"
+	ssh root@$ip_address docker run --name $server_name"-`date +%m%d`" --restart=always -d -v /data/zyg/logs/eureka-server/"`date +%m%d`":/log  --network=host "$docker_repostory$image_name"
 	echo "docker images run complete:$image_name"
 	exit 1
 fi

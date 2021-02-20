@@ -18,4 +18,4 @@ ENV JAVA_OPTS="-Xms128m -Xmx128m"
 #运行命令
 ENTRYPOINT java ${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom -jar /app.jar --server.port=${SERVER_PORT}
 #注释
-LABEL description = "注册中心服务--开发环境"
+LABEL description = "注册中心服务--测试环境"
