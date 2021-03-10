@@ -9,7 +9,9 @@
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
     <modules>
-        <module>eureka-server</module>
+        <module>zyg-registry</module>
+        <module>zyg-getway</module>
+        <module>zyg-core</module>
     </modules>
 
     <parent>
