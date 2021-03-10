@@ -1,0 +1,5 @@
+app:
+  id: zyg-registry
+spring:
+  profiles:
+    active: '@profiles.active@'

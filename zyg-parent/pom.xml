@@ -10,6 +10,8 @@
     <version>1.0.0-SNAPSHOT</version>
     <modules>
         <module>zyg-core</module>
+        <module>zyg-registry</module>
+        <module>zyg-getway</module>
     </modules>
 
     <parent>
@@ -37,50 +39,6 @@
         <docker.image.prefix>zyg</docker.image.prefix>
         <docker.repostory>192.168.16.84</docker.repostory>
     </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <!-- springCloud -->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <!-- mybatis启动器 -->
-            <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${mybatis.starter.version}</version>
-            </dependency>
-            <!-- 通用Mapper启动器 -->
-            <dependency>
-                <groupId>tk.mybatis</groupId>
-                <artifactId>mapper-spring-boot-starter</artifactId>
-                <version>${mapper.starter.version}</version>
-            </dependency>
-            <!-- 分页助手启动器 -->
-            <dependency>
-                <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper-spring-boot-starter</artifactId>
-                <version>${pageHelper.starter.version}</version>
-            </dependency>
-            <!-- mysql驱动 -->
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
-            </dependency>
-            <!--FastDFS客户端-->
-            <dependency>
-                <groupId>com.github.tobato</groupId>
-                <artifactId>fastdfs-client</artifactId>
-                <version>${fastDFS.client.version}</version>
-            </dependency>
-
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <plugins>
