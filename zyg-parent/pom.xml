@@ -9,8 +9,6 @@
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
     <modules>
-        <module>zyg-registry</module>
-        <module>zyg-getway</module>
         <module>zyg-core</module>
     </modules>
 
@@ -32,6 +30,10 @@
         <mysql.version>8.0.17</mysql.version>
         <pageHelper.starter.version>1.2.3</pageHelper.starter.version>
         <fastDFS.client.version>1.26.1-RELEASE</fastDFS.client.version>
+        <io.springfox.swagger2>2.8.0</io.springfox.swagger2>
+        <java-jwt.version>3.8.1</java-jwt.version>
+        <alibaba.druid>1.0.31</alibaba.druid>
+        <alibaba.fastjson>1.2.73</alibaba.fastjson>
         <docker.image.prefix>zyg</docker.image.prefix>
         <docker.repostory>192.168.16.84</docker.repostory>
     </properties>
