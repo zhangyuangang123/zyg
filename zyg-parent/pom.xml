@@ -12,6 +12,7 @@
         <module>zyg-core</module>
         <module>zyg-registry</module>
         <module>zyg-getway</module>
+        <module>zyg-item</module>
     </modules>
 
     <parent>
