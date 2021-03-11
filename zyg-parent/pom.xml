@@ -28,7 +28,7 @@
         <alibaba.druid>1.0.31</alibaba.druid>
         <alibaba.fastjson>1.2.73</alibaba.fastjson>
         <docker.image.prefix>zyg</docker.image.prefix>
-        <docker.repostory>192.168.16.84</docker.repostory>
+        <docker.repostory>192.168.16.61</docker.repostory>
     </properties>
 
     <dependencyManagement>
@@ -67,7 +67,7 @@
         <profile>
             <id>fat</id>
             <properties>
-                <apollo.url>http://192.168.16.66:8080</apollo.url>
+                <apollo.url>http://192.168.16.158:8080</apollo.url>
                 <profiles.active>fat</profiles.active>
             </properties>
         </profile>
