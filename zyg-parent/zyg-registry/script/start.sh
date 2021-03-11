@@ -23,19 +23,19 @@ else
 	echo "未知的打包环境"
 	exit 1
 fi
-echo "----git pull----"
-git pull >> /dev/null
-if (( $? ))
-then
-	echo "git pull failed"
-	exit 1
-else
-	echo "git pull success"
-fi
+echo "----git pull 开始----"
+#git pull >> /dev/null
+#if (( $? ))
+#then
+#	echo "git pull failed"
+#	exit 1
+#else
+#	echo "git pull success"
+#fi
 echo "----zyg-core install----"
 
 cd "$topdir$coredir"
-git pull >> /dev/null
+#git pull >> /dev/null
 mvn clean install >> /dev/null
 if (( $? ))
 then
