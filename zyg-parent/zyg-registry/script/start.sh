@@ -7,7 +7,7 @@ server_tag=:1.0.0-SNAPSHOT
 #服务路径
 workdir=$(dirname  "$(pwd)")
 #工程路径
-topdir=${workdir%hgs-parent*}
+topdir=${workdir%zyg-parent*}
 #core包路径
 coredir="zyg-parent/zyg-core"
 echo "workspace dir:" $workdir
@@ -32,17 +32,17 @@ then
 else
 	echo "git pull success"
 fi
-echo "----hgs-ms-core install----"
+echo "----zyg-core install----"
 
 cd "$topdir$coredir"
 git pull >> /dev/null
 mvn clean install >> /dev/null
 if (( $? ))
 then
-	echo "hgs-ms-core：mvn install failed"
+	echo "zyg-core：mvn install failed"
 	exit 1
 else
-	echo "hgs-ms-core：mvn install success"
+	echo "zyg-core：mvn install success"
 fi
 #cd "$topdir$commondir"
 #echo "----caption-basics-server install----"
