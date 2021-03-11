@@ -1,13 +1,17 @@
 #!/bin/bash
 #打包镜像启动服务
 #author：SHIYULONG
-docker_repostory=192.168.16.84/zyg/
+docker_repostory=192.168.16.61/zyg/
 server_name=zyg-registry
 server_tag=:1.0.0-SNAPSHOT
 #服务路径
 workdir=$(dirname  "$(pwd)")
 #工程路径
-topdir=${workdir%zyg-parent*}
+topdir=${workdir%hgs-parent*}
+#core包路径
+coredir="zyg-parent/zyg-core"
+echo "workspace dir:" $workdir
+echo "core dir:"$topdir$coredir
 active=$1
 if [ $active"x" == "devx" ]; then
 	echo "打包环境：开发环境"
@@ -19,7 +23,38 @@ else
 	echo "未知的打包环境"
 	exit 1
 fi
+echo "----git pull----"
+git pull >> /dev/null
+if (( $? ))
+then
+	echo "git pull failed"
+	exit 1
+else
+	echo "git pull success"
+fi
+echo "----hgs-ms-core install----"
 
+cd "$topdir$coredir"
+git pull >> /dev/null
+mvn clean install >> /dev/null
+if (( $? ))
+then
+	echo "hgs-ms-core：mvn install failed"
+	exit 1
+else
+	echo "hgs-ms-core：mvn install success"
+fi
+#cd "$topdir$commondir"
+#echo "----caption-basics-server install----"
+#git pull >> /dev/null
+#mvn clean install >> /dev/null
+#if (( $? ))
+#then
+#	echo "caption-basics-server：mvn install failed"
+#	exit 1
+#else
+#	echo "caption-basics-server：mvn install success"
+#fi
 cd $workdir
 echo "mvn package：${workdir##*/}"
 mvn clean package -P$active >> /dev/null
@@ -74,7 +109,7 @@ docker push "$docker_repostory$image_name"
 	echo "stop container:$server_name"
 	ssh root@$ip_address docker stop $(docker ps -q -a --filter name=$server_name)
 	echo "images run"
-	ssh root@$ip_address docker run --name $server_name"-`date +%m%d`" --restart=always -d -v /data/zyg/logs/eureka-server/"`date +%m%d`":/log  --network=host "$docker_repostory$image_name"
+	ssh root@$ip_address docker run --name $server_name"-`date +%m%d`" --restart=always -d -v /data/zyg/logs/zyg-registry/"`date +%m%d`":/log  --network=host "$docker_repostory$image_name"
 	echo "docker images run complete:$image_name"
 	exit 1
 fi
