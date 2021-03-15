@@ -28,7 +28,7 @@
         <alibaba.druid>1.0.31</alibaba.druid>
         <alibaba.fastjson>1.2.73</alibaba.fastjson>
         <docker.image.prefix>zyg</docker.image.prefix>
-        <docker.repostory>192.168.16.61</docker.repostory>
+        <docker.repostory>192.168.16.249</docker.repostory>
     </properties>
 
     <dependencyManagement>
