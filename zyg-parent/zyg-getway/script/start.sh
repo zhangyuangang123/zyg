@@ -79,6 +79,7 @@ then
 		echo "rm container"
 	fi
 	echo "start running docker images：$image_name"
+	echo "start running docker server_name：$server_name"
 	docker run --name "$server_name" -d --restart=always -v "/data/zyg/logs/$server_name/":/log  --network=host "$docker_repostory$image_name"
 	#启动日志
 	docker logs -f $(docker ps -q --filter name=$server_name)|while read line
