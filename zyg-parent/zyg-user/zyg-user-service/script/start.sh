@@ -23,7 +23,7 @@ else
 	echo "未知的打包环境"
 	exit 1
 fi
-#echo "----git pull----"
+echo "----git pull 开始----"
 #git pull >> /dev/null
 #if (( $? ))
 #then
@@ -35,7 +35,7 @@ fi
 echo "----zyg-core install----"
 
 cd "$topdir$coredir"
-git pull >> /dev/null
+#git pull >> /dev/null
 mvn clean install >> /dev/null
 if (( $? ))
 then
@@ -70,7 +70,7 @@ image_name="$server_name-$1$server_tag"
 if [ $active = "dev" ] || [ $active = "fat" ];
 then
 	#关闭容器、删除容器
-	container_id=`docker ps -q --filter name=$server_name`
+	container_id=$(docker ps -q --filter name="^/$server_name")
 	if [ ! -z $container_id ];
 	then
 		docker stop $container_id
@@ -109,7 +109,7 @@ docker push "$docker_repostory$image_name"
 	echo "stop container:$server_name"
 	ssh root@$ip_address docker stop $(docker ps -q -a --filter name=$server_name)
 	echo "images run"
-	ssh root@$ip_address docker run --name $server_name"-`date +%m%d`" --restart=always -d -v /data/hgsv2/logs/zyg-user/"`date +%m%d`":/log  --network=host "$docker_repostory$image_name"
+	ssh root@$ip_address docker run --name $server_name"-`date +%m%d`" --restart=always -d -v /data/zyg/logs/zyg-user/"`date +%m%d`":/log  --network=host "$docker_repostory$image_name"
 	echo "docker images run complete:$image_name"
 	exit 1
 fi
