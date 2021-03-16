@@ -31,7 +31,7 @@ fi
 #	exit 1
 #else
 #	echo "git pull success"
-fi
+#fi
 echo "----zyg-core install----"
 
 cd "$topdir$coredir"
