@@ -4,4 +4,4 @@ apollo:
     enabled: true
     eagerLoad:
       enabled: true
-    namespaces: application
+    namespaces: application,application,TEST1.zyg-public-config
