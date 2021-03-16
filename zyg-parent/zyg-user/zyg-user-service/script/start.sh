@@ -70,7 +70,7 @@ image_name="$server_name-$1$server_tag"
 if [ $active = "dev" ] || [ $active = "fat" ];
 then
 	#关闭容器、删除容器
-	container_id=`docker ps -q --filter name=$server_name`
+	container_id=$(docker ps -q --filter name="^/$server_name")
 	if [ ! -z $container_id ];
 	then
 		docker stop $container_id

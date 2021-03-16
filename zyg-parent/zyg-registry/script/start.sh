@@ -1,7 +1,7 @@
 #!/bin/bash
 #打包镜像启动服务
 #author：SHIYULONG
-docker_repostory=192.168.16.61/zyg/
+docker_repostory=192.168.16.249/zyg/
 server_name=zyg-registry
 server_tag=:1.0.0-SNAPSHOT
 #服务路径
@@ -70,7 +70,7 @@ image_name="$server_name-$1$server_tag"
 if [ $active = "dev" ] || [ $active = "fat" ];
 then
 	#关闭容器、删除容器
-	container_id=`docker ps -q --filter name=$server_name`
+	container_id=$(docker ps -q --filter name="^/$server_name")
 	if [ ! -z $container_id ];
 	then
 		docker stop $container_id
