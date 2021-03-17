@@ -60,7 +60,7 @@ public class UserService {
             Map<String, String> msg = new HashMap<>();
             msg.put("phone", phone);
             msg.put("code", code);
-            this.amqpTemplate.convertAndSend("leyou.sms.exchange", "sms.verify.code", msg);
+            this.amqpTemplate.convertAndSend("zyg.sms.exchange", "sms.verify.code", msg);
             // 将code存入redis
             this.redisTemplate.opsForValue().set(KEY_PREFIX + phone, code, 5, TimeUnit.MINUTES);
             return true;
