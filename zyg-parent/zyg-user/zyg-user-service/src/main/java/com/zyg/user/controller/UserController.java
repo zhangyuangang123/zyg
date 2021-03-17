@@ -1,5 +1,6 @@
 package com.zyg.user.controller;
 
+import com.zyg.core.base.BaseResponse;
 import com.zyg.user.pojo.User;
 import com.zyg.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
-
 
     /**
      * 校验数据是否可用
@@ -43,12 +42,12 @@ public class UserController {
      * @return
      */
     @PostMapping("code")
-    public ResponseEntity<Void> sendVerifyCode(String phone) {
+    public ResponseEntity<Object> sendVerifyCode(String phone) {
         Boolean boo = this.userService.sendVerifyCode(phone);
         if (boo == null || !boo) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return BaseResponse.sendMessageIdentity();
         }
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return BaseResponse.sendMessageSuccess();
     }
 
     /**
@@ -58,12 +57,12 @@ public class UserController {
      * @return
      */
     @PostMapping("register")
-    public ResponseEntity<Void> register(@Valid User user, @RequestParam("code") String code) {
+    public ResponseEntity<Object> register(@Valid User user, @RequestParam("code") String code) {
         Boolean boo = this.userService.register(user, code);
         if (boo == null || !boo) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            return BaseResponse.sendMessageIdentity();
         }
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return BaseResponse.sendMessageSuccess();
     }
 
 
@@ -74,15 +73,15 @@ public class UserController {
      * @return
      */
     @GetMapping("query")
-    public ResponseEntity<User> queryUser(
+    public ResponseEntity<Object> queryUser(
             @RequestParam("username") String username,
             @RequestParam("password") String password
     ) {
         User user = this.userService.queryUser(username, password);
         if (user == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            return BaseResponse.sendMessageIdentity();
         }
-        return ResponseEntity.ok(user);
+        return BaseResponse.setData(user);
     }
 
 
