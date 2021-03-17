@@ -12,18 +12,32 @@
     <artifactId>zyg-getway</artifactId>
 
     <dependencies>
+
+        <!-- gateway -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
 
-        <!-- apollo -->
         <dependency>
-            <groupId>com.ctrip.framework.apollo</groupId>
-            <artifactId>apollo-client</artifactId>
-            <version>1.6.0</version>
+            <groupId>com.zyg</groupId>
+            <artifactId>zyg-core</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.github.openfeign</groupId>
+                    <artifactId>feign-httpclient</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-amqp</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-
     </dependencies>
 
     <build>
