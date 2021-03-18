@@ -3,6 +3,7 @@ package com.zyg.getway;
 import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
@@ -10,7 +11,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * @author :zyg
  * @date :2021/01/27
  */
-@SpringBootApplication
+@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
 @EnableEurekaClient
 @EnableApolloConfig
 public class GetwayApplication {
