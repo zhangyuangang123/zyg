@@ -15,6 +15,7 @@
         <module>zyg-item</module>
         <module>zyg-user</module>
         <module>zyg-common</module>
+        <module>zyg-auth</module>
     </modules>
 
     <properties>

@@ -1,0 +1,5 @@
+app:
+  id: zyg-auth-service
+spring:
+  profiles:
+    active: '@profiles.active@'
