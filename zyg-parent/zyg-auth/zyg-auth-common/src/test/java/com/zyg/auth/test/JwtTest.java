@@ -11,7 +11,7 @@ import java.security.PublicKey;
 
 public class JwtTest {
 
-    private static final String pubKeyPath = "e:\\rsa\\rsa.pub";
+    /*private static final String pubKeyPath = "e:\\rsa\\rsa.pub";
 
     private static final String priKeyPath = "e:\\rsa\\rsa.pri";
 
@@ -45,5 +45,5 @@ public class JwtTest {
         UserInfo user = JwtUtils.getInfoFromToken(token, publicKey);
         System.out.println("id: " + user.getId());
         System.out.println("userName: " + user.getUsername());
-    }
+    }*/
 }
