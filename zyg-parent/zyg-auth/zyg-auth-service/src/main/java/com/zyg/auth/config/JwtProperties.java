@@ -10,7 +10,7 @@ import java.io.File;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
-@ConfigurationProperties(prefix = "leyou.jwt")
+@ConfigurationProperties(prefix = "zyg.jwt")
 public class JwtProperties {
 
     private String secret; // 密钥
