@@ -5,7 +5,7 @@ MAINTAINER SHIYULONG[375379617@qq.com]
 #挂载目录
 VOLUME /tmp /log
 #环境变量
-ENV SERVER_PORT 8761
+ENV SERVER_PORT 8085
 #同步时间
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone
