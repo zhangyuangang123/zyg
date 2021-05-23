@@ -114,4 +114,13 @@ public class UserService {
         // 用户名密码都正确
         return user;
     }
+
+    public static void main(String[] args) {
+        // 生成盐
+        String salt = CodecUtils.generateSalt();
+        System.out.println(salt);
+
+        System.out.println(CodecUtils.md5Hex("123456", salt));
+        // 对密码加密
+    }
 }

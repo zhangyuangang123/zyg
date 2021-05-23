@@ -45,9 +45,9 @@ public class UserController {
     public ResponseEntity<Object> sendVerifyCode(String phone) {
         Boolean boo = this.userService.sendVerifyCode(phone);
         if (boo == null || !boo) {
-            return BaseResponse.sendMessageIdentity();
+            return BaseResponse.error();
         }
-        return BaseResponse.sendMessageSuccess();
+        return BaseResponse.ok();
     }
 
     /**
@@ -60,9 +60,9 @@ public class UserController {
     public ResponseEntity<Object> register(@Valid User user, @RequestParam("code") String code) {
         Boolean boo = this.userService.register(user, code);
         if (boo == null || !boo) {
-            return BaseResponse.sendMessageIdentity();
+            return BaseResponse.error();
         }
-        return BaseResponse.sendMessageSuccess();
+        return BaseResponse.ok();
     }
 
 
@@ -79,9 +79,9 @@ public class UserController {
     ) {
         User user = this.userService.queryUser(username, password);
         if (user == null) {
-            return BaseResponse.sendMessageIdentity();
+            return BaseResponse.ok();
         }
-        return BaseResponse.setData(user);
+        return BaseResponse.ok(user);
     }
 
 

@@ -2,45 +2,60 @@ package com.zyg.core.base;
 
 import lombok.Getter;
 
-/**
- * @ClassName ResultCodeEnum
- * @Author PGT
- * @Description 结果类枚举
- * @Date 2020-05-06 下午 01:34
- **/
+
 @Getter
 public enum ResultCodeEnum {
+    /**
+     * 成功
+     */
+    SUCCESS(true,20000,"成功"),
+    /**
+     * 未知错误
+     */
+    UNKNOWN_ERROR(false,20001,"未知错误"),
+    /**
+     * 参数错误
+     */
+    PARAM_ERROR(false,20002,"参数错误"),
+    /**
+     * token错误
+     */
+    TOKEN_ERROR(false,401,"token错误"),
 
-    SUCCESS(true, 200, "成功",10000),
-    FAIL(false,200,"请重试",10000),
-    SIGN_ERROR(true, 201, "请重新登录",201),
-    ERROR_REQUEST(false, 400, "缺少必填参数",400),
+    /**
+     * 管理端： 不能删除未停用的数据
+     */
+    NOT_DELETE_ENABLE(false,402,"未停用，不能删除！"),
+    /**
+     * 商品券无库存!
+     */
+    NO_COUPON_STORE(false,506,"商品券无库存!"),
+    /**
+     * 管理端： 规则已使用，不能删除
+     */
+    NO_DELETE_BARGAIN_ACTIVITY(false,403,"规则已被使用，不能删除!"),
+    /**
+     * 管理端： 规则已使用，不能删除
+     */
+    NO_ENABLE_BARGAIN_ACTIVITY(false,404,"规则已被使用，不能停用!");
 
-    // jwt
-    ERROR_IDENTITY(false, 401, "需要验证身份（登录）",401),
-    ERROR_PERMISSIONS(false, 403, "身份有效，但权限不足",403),
-    ERROR_RESOURCES(false, 404, "请求的资源不存在",404),
-    ERROR_METHODS(false, 405, "针对这个资源所请求的方法被禁止",405),
-    ERROR_NOT_LOG_IN(false, 406, "未登录",406),
-    ERROR_LOGIN_DATE(false, 407, "登录过期",407),
-
-    // sys
-    ERROR_SYSTEM(false, 500, "系统繁忙",30000);
-
-
-    // 响应是否成功
+    /**
+     * 响应是否成功
+     */
     private Boolean success;
-    // 响应状态码
-    private Integer statusCode;
-    // 响应信息
+    /**
+     * 响应是否成功
+     */
+    private Integer code;
+    /**
+     * 响应信息
+     */
     private String message;
 
-    private Integer code;
-
-    ResultCodeEnum(boolean success, Integer statusCode, String message, Integer code) {
+    ResultCodeEnum(boolean success, Integer code, String message) {
         this.success = success;
-        this.statusCode = statusCode;
-        this.message = message;
         this.code = code;
+        this.message = message;
     }
+
 }
