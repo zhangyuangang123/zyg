@@ -2,7 +2,7 @@
 #打包镜像启动服务
 #author：SHIYULONG
 docker_repostory=192.168.6.129/zyg/
-server_name=zyg-user
+server_name=zyg-user-service
 server_tag=:1.0.0-SNAPSHOT
 #服务路径
 workdir=$(dirname  "$(pwd)")
@@ -111,7 +111,7 @@ docker push "$docker_repostory$image_name"
 	echo "stop container:$server_name"
 	ssh root@$ip_address docker stop $(docker ps -q -a --filter name=$server_name)
 	echo "images run"
-	ssh root@$ip_address docker run --name $server_name"-`date +%m%d`" --restart=always -d -v /data/zyg/logs/zyg-user/"`date +%m%d`":/log  --network=host "$docker_repostory$image_name"
+	ssh root@$ip_address docker run --name $server_name"-`date +%m%d`" --restart=always -d -v /data/zyg/logs/zyg-user-service/"`date +%m%d`":/log  --network=host "$docker_repostory$image_name"
 	echo "docker images run complete:$image_name"
 	exit 1
 fi
