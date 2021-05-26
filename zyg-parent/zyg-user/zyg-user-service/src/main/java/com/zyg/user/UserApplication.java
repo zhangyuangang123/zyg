@@ -17,7 +17,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @SpringBootApplication(scanBasePackages = {"com.zyg.user.*","com.zyg.core.*"})
 @EnableTransactionManagement
 @EnableEurekaClient
-@EnableFeignClients
+@EnableFeignClients(basePackages = {"com.zyg.user.*"})
 @MapperScan(value = "com.zyg.*.mapper")
 @EnableApolloConfig
 public class UserApplication {
