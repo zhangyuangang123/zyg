@@ -5,7 +5,6 @@ import com.zyg.auth.entity.UserInfo;
 import com.zyg.auth.service.AuthService;
 import com.zyg.auth.utils.JwtUtils;
 import com.zyg.common.utils.CookieUtils;
-import com.zyg.core.base.BaseResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -34,7 +33,7 @@ public class AuthController {
      * @return
      */
     @PostMapping("accredit")
-    public ResponseEntity<Object> authentication(
+    public ResponseEntity<Void> authentication(
             @RequestParam("username") String username,
             @RequestParam("password") String password,
             HttpServletRequest request,
@@ -42,12 +41,12 @@ public class AuthController {
         // 登录校验
         String token = this.authService.authentication(username, password);
         if (StringUtils.isBlank(token)) {
-            return BaseResponse.error();
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
         // 将token写入cookie,并指定httpOnly为true，防止通过JS获取和修改
         CookieUtils.setCookie(request, response, prop.getCookieName(),
                 token, prop.getCookieMaxAge(), null, true);
-        return BaseResponse.ok();
+        return ResponseEntity.ok().build();
     }
 
     /**
@@ -56,7 +55,7 @@ public class AuthController {
      * @return
      */
     @GetMapping("verify")
-    public ResponseEntity<Object> verifyUser(@CookieValue("LY_TOKEN")String token, HttpServletRequest request, HttpServletResponse response){
+    public ResponseEntity<UserInfo> verifyUser(@CookieValue("ZYG_TOKEN")String token, HttpServletRequest request, HttpServletResponse response){
         try {
             // 从token中解析token信息
             UserInfo userInfo = JwtUtils.getInfoFromToken(token, this.prop.getPublicKey());
@@ -66,11 +65,11 @@ public class AuthController {
             CookieUtils.setCookie(request, response, this.prop.getCookieName(), token, this.prop.getCookieMaxAge());
 
             // 解析成功返回用户信息
-            return BaseResponse.ok(userInfo);
+            return ResponseEntity.ok(userInfo);
         } catch (Exception e) {
             e.printStackTrace();
         }
         // 出现异常则，响应500
-        return BaseResponse.error();
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 }
