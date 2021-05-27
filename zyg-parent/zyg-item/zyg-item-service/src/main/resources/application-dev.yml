@@ -1,0 +1,7 @@
+apollo:
+  meta: '@apollo.url@'
+  bootstrap:
+    enabled: true
+    eagerLoad:
+      enabled: true
+    namespaces: application,TEST1.zyg-public-config
