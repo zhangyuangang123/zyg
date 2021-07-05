@@ -72,7 +72,7 @@ public class UserController {
      * @param password
      * @return
      */
-    @GetMapping("query")
+        @GetMapping("query")
     public ResponseEntity<Object> queryUser(
             @RequestParam("username") String username,
             @RequestParam("password") String password
