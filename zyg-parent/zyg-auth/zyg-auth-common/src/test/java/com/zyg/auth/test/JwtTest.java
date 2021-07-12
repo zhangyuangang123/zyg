@@ -1,3 +1,4 @@
+/*
 package com.zyg.auth.test;
 
 import com.zyg.auth.entity.UserInfo;
@@ -6,14 +7,16 @@ import com.zyg.auth.utils.RsaUtils;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.IOException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
 public class JwtTest {
 
-    /*private static final String pubKeyPath = "e:\\rsa\\rsa.pub";
+    private static final String pubKeyPath = "/Users/mac/rsa.pub";
 
-    private static final String priKeyPath = "e:\\rsa\\rsa.pri";
+    private static final String priKeyPath = "/Users/mac/rsa.pri";
 
     private PublicKey publicKey;
 
@@ -24,11 +27,13 @@ public class JwtTest {
         RsaUtils.generateKey(pubKeyPath, priKeyPath, "234");
     }
 
-    //@Before
+    */
+/*@Before
     public void testGetRsa() throws Exception {
         this.publicKey = RsaUtils.getPublicKey(pubKeyPath);
         this.privateKey = RsaUtils.getPrivateKey(priKeyPath);
-    }
+    }*//*
+
 
     @Test
     public void testGenerateToken() throws Exception {
@@ -45,5 +50,10 @@ public class JwtTest {
         UserInfo user = JwtUtils.getInfoFromToken(token, publicKey);
         System.out.println("id: " + user.getId());
         System.out.println("userName: " + user.getUsername());
-    }*/
-}
+    }
+
+    public static void main(String[] args) throws IOException {
+        File f = new File("/Users/mac/Java.txt");
+        f.createNewFile();
+    }
+}*/
