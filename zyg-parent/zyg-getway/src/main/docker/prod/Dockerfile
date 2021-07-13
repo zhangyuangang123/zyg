@@ -13,7 +13,7 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 #添加jar包到容器中
 ADD target/*jar app.jar
 #复制文件夹
-COPY rsa.pub /data/zyg/rsa/rsa.pub
+ADD rsa.pub /data/zyg/rsa/
 #暴露端口
 EXPOSE $SERVER_PORT
 #定义jvm参数变量
