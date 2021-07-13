@@ -9,10 +9,11 @@ ENV SERVER_PORT 8761
 #同步时间
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone
+
 #添加jar包到容器中
 ADD target/*jar app.jar
 #复制文件夹
-COPY rsa.pub /home/rsa.pub
+COPY rsa.pub /home/rsa/rsa.pub
 #暴露端口
 EXPOSE $SERVER_PORT
 #定义jvm参数变量
