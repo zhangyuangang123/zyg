@@ -12,7 +12,7 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 #添加jar包到容器中
 ADD target/*jar app.jar
 #复制文件夹
-ADD /home/rsa/rsa.pub rsa.pub
+COPY src/main/docker/prod/rsa.pub /home/rsa/rsa.pub
 #暴露端口
 EXPOSE $SERVER_PORT
 #定义jvm参数变量
