@@ -11,6 +11,8 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone
 #添加jar包到容器中
 ADD target/*jar app.jar
+COPY src/main/docker/prod/rsa.pub /home/rsa/rsa.pub
+COPY src/main/docker/prod/rsa.pri /home/rsa/rsa.pri
 #暴露端口
 EXPOSE $SERVER_PORT
 #定义jvm参数变量
