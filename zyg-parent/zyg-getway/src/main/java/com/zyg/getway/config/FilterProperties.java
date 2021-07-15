@@ -1,3 +1,4 @@
+/*
 package com.zyg.getway.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -16,4 +17,4 @@ public class FilterProperties {
     public void setAllowPaths(List<String> allowPaths) {
         this.allowPaths = allowPaths;
     }
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 package com.zyg.getway.config;
 
 import com.zyg.auth.utils.RsaUtils;
@@ -53,4 +54,4 @@ public class JwtProperties {
     public void setCookieName(String cookieName) {
         this.cookieName = cookieName;
     }
-}
+}*/

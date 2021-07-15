@@ -1,3 +1,4 @@
+/*
 package com.zyg.getway.filter;
 
 import com.netflix.zuul.ZuulFilter;
@@ -79,3 +80,4 @@ public class LoginFilter extends ZuulFilter {
     }
 }
 
+*/
