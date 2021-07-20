@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @EnableConfigurationProperties(JwtProperties.class)
+@RequestMapping("/auth")
 public class AuthController {
 
     @Autowired

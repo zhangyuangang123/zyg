@@ -4,6 +4,7 @@ import com.zyg.auth.api.UserClient;
 import com.zyg.auth.config.JwtProperties;
 import com.zyg.auth.entity.UserInfo;
 import com.zyg.auth.utils.JwtUtils;
+import com.zyg.core.utils.ResponseEntityUtil;
 import com.zyg.user.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,7 @@ public class AuthService {
 
         try {
             // 调用微服务，执行查询
-            User user = this.userClient.queryUser(username, password);
-
+            User user = ResponseEntityUtil.toJavaBean(this.userClient.queryUser(username, password), User.class);
             // 如果查询结果为null，则直接返回null
             if (user == null) {
                 return null;
