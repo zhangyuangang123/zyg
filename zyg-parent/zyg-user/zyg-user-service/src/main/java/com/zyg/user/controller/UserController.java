@@ -7,14 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -72,19 +70,19 @@ public class UserController {
      * @param password
      * @return
      */
-        @GetMapping("query")
+    @GetMapping("query")
     public ResponseEntity<Object> queryUser(
             @RequestParam("username") String username,
             @RequestParam("password") String password
     ) {
         User user = this.userService.queryUser(username, password);
         if (user == null) {
-            return BaseResponse.ok();
+            return BaseResponse.error();
         }
         return BaseResponse.ok(user);
     }
 
 
 
-    
+
 }
