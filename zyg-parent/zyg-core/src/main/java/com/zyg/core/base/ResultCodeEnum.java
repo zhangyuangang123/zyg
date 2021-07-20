@@ -37,7 +37,9 @@ public enum ResultCodeEnum {
     /**
      * 管理端： 规则已使用，不能删除
      */
-    NO_ENABLE_BARGAIN_ACTIVITY(false,404,"规则已被使用，不能停用!");
+    NO_ENABLE_BARGAIN_ACTIVITY(false,404,"规则已被使用，不能停用!"),
+
+    NO_USERNAME_OR_PASSWORD_ERROR(false,405,"用户名或者密码错误");
 
     /**
      * 响应是否成功
