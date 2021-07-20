@@ -1,6 +1,7 @@
 package com.zyg.user.controller;
 
 import com.zyg.core.base.BaseResponse;
+import com.zyg.core.base.ResultCodeEnum;
 import com.zyg.user.pojo.User;
 import com.zyg.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,7 +78,7 @@ public class UserController {
     ) {
         User user = this.userService.queryUser(username, password);
         if (user == null) {
-            return BaseResponse.error();
+            return BaseResponse.error(ResultCodeEnum.NO_USERNAME_OR_PASSWORD_ERROR);
         }
         return BaseResponse.ok(user);
     }
