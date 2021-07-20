@@ -1,4 +1,3 @@
-/*
 package com.zyg.auth.test;
 
 import com.zyg.auth.entity.UserInfo;
@@ -40,7 +39,7 @@ public class JwtTest {
 
     @Test
     public void testParseToken() throws Exception {
-        String token = "eyJhbGciOiJSUzI1NiJ9.eyJpZCI6MjAsInVzZXJuYW1lIjoiamFjayIsImV4cCI6MTYyNjI0ODY1Mn0.TMYQGD1RAiN5ETaWP8jVzTY5UWMDEv2aeDTeW7Qw4ybjIIRMNjkTc_J6ynUOoCJOHzOgdvpoEravs0cauF9TlLi-NxgU_RZ320ZPrwEUK4uPqGXMEdkl_OXcd-Per89R0FCyJPRC8Hll0703qtvbzHsKV0HdoTG5K9d_JEtmRaw";
+        String token = "eyJhbGciOiJSUzI1NiJ9.eyJpZCI6MjgsInVzZXJuYW1lIjoiemhhbmdzYW4iLCJleHAiOjE2MjY2ODU4NDR9.SmoHGuQSzfuOCNLUWNU1GRdrtALhOMpc6i8ZEyY2ciW6XjldM7pQfp2lBAktLFrKNOT69jpjddVNztfRqlwL7cryCpmbnVzzETzgUxw0jE1rcSBYaoldaWtkxyEVRxXgkoBeKOlXk6HSXYZ3MEOiiF5BsDJGpjexX-mXvIQe_9Y";
 
         // 解析token
         UserInfo user = JwtUtils.getInfoFromToken(token, publicKey);
@@ -48,4 +47,3 @@ public class JwtTest {
         System.out.println("userName: " + user.getUsername());
     }
 }
-*/

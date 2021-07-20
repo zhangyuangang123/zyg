@@ -5,7 +5,7 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 import com.zyg.auth.utils.JwtUtils;
-import com.zyg.common.utils.CookieUtils;
+import com.zyg.getway.utils.CookieUtils;
 import com.zyg.getway.config.FilterProperties;
 import com.zyg.getway.config.JwtProperties;
 import org.slf4j.Logger;
@@ -79,5 +79,4 @@ public class LoginFilter extends ZuulFilter {
         return null;
     }
 }
-
 */
