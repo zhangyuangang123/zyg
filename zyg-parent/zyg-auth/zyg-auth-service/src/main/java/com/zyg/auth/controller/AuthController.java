@@ -5,19 +5,23 @@ import com.zyg.auth.entity.UserInfo;
 import com.zyg.auth.service.AuthService;
 import com.zyg.auth.utils.JwtUtils;
 import com.zyg.common.utils.CookieUtils;
+import com.zyg.core.base.BaseResponse;
+import com.zyg.core.base.ResultCodeEnum;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@RestController
+@Controller
 @EnableConfigurationProperties(JwtProperties.class)
 @RequestMapping("/auth")
+@ResponseBody
 public class AuthController {
 
     @Autowired
@@ -34,7 +38,8 @@ public class AuthController {
      * @return
      */
     @PostMapping("accredit")
-    public ResponseEntity<Void> authentication(
+    @ResponseBody
+    public ResponseEntity<Object> authentication(
             @RequestParam("username") String username,
             @RequestParam("password") String password,
             HttpServletRequest request,
@@ -42,12 +47,12 @@ public class AuthController {
         // 登录校验
         String token = this.authService.authentication(username, password);
         if (StringUtils.isBlank(token)) {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+           return BaseResponse.error(ResultCodeEnum.NO_USERNAME_OR_PASSWORD_ERROR);
         }
         // 将token写入cookie,并指定httpOnly为true，防止通过JS获取和修改
         CookieUtils.setCookie(request, response, prop.getCookieName(),
                 token, prop.getCookieMaxAge(), null, true);
-        return ResponseEntity.ok().build();
+        return BaseResponse.ok();
     }
 
     /**
