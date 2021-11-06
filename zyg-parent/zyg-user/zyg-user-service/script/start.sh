@@ -1,7 +1,7 @@
 #!/bin/bash
 #打包镜像启动服务
 #author：SHIYULONG
-docker_repostory=192.168.141.130/zyg/
+docker_repostory=192.168.141.3/zyg/
 server_name=zyg-user-service
 server_tag=:1.0.0-SNAPSHOT
 #服务路径

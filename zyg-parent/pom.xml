@@ -29,7 +29,7 @@
         <alibaba.druid>1.0.31</alibaba.druid>
         <alibaba.fastjson>1.2.73</alibaba.fastjson>
         <docker.image.prefix>zyg</docker.image.prefix>
-        <docker.repostory>192.168.141.130</docker.repostory>
+        <docker.repostory>192.168.141.3</docker.repostory>
     </properties>
 
     <dependencyManagement>
@@ -67,7 +67,7 @@
         <profile>
             <id>dev</id>
             <properties>
-                <apollo.url>http://192.168.141.131:8080</apollo.url>
+                <apollo.url>http://192.168.141.2:8080</apollo.url>
                 <profiles.active>dev</profiles.active>
             </properties>
             <!-- 是否默认 true表示默认-->
@@ -79,7 +79,7 @@
         <profile>
             <id>fat</id>
             <properties>
-                <apollo.url>http://192.168.141.131:8080</apollo.url>
+                <apollo.url>http://192.168.141.2:8080</apollo.url>
                 <profiles.active>fat</profiles.active>
             </properties>
         </profile>
@@ -88,7 +88,7 @@
             <!-- 生产环境 -->
             <id>prod</id>
             <properties>
-                <apollo.url>http://192.168.141.131:8080</apollo.url>
+                <apollo.url>http://192.168.141.2:8080</apollo.url>
                 <profiles.active>prod</profiles.active>
             </properties>
         </profile>
